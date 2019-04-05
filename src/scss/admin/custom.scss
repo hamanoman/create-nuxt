@@ -1,0 +1,75 @@
+@charset "UTF-8";
+
+/*================================================================
+ LOGIN画面
+=================================================================*/
+body.login {
+  background: {
+    color: #f6f3f1;
+  }
+}
+
+body.login div#login h1 {}
+body.login div#login h1 a {
+  width: 100%;
+  max-width: 150px;
+  height: 35px;
+  background: {
+    repeat: no-repeat;
+    image: url('http://wp.ca4la.com/ca4la_cms/wp-content/plugins/ca4la/images/logo_ca4la.svg');
+    position: center;
+  	size: 100% auto;
+  }
+}
+
+
+
+/*================================================================
+ 管理画面サイドメニュー
+=================================================================*/
+// #adminmenu #toplevel_page_edit-post_type-page .wp-submenu li:nth-child(1),
+// #adminmenu #toplevel_page_edit-post_type-page .wp-submenu li:nth-child(2),
+// #adminmenu #toplevel_page_edit-post_type-page .wp-submenu li:nth-child(3)
+// {
+//   display: none;
+// }
+
+
+
+/*================================================================
+ 固定ページ - TOP更新用
+=================================================================*/
+.post-page-93 {
+  .wp-editor-expand {
+    display: none;
+  }
+  .acf-field[data-name="top_category"] {
+    .acf-row {
+      &:nth-child(2),
+      &:nth-child(4),
+      &:nth-child(7),
+      &:nth-child(10) {
+        [data-name="top_category_img"] {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+
+
+/*================================================================
+ 固定ページ - Shop スライダー更新用
+=================================================================*/
+.post-page-81 {
+  .wp-editor-expand {
+    display: none;
+  }
+}
+
+
+
+/*================================================================
+ タクソノミー - プロダクトブランド
+=================================================================*/

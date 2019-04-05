@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+/* 共通スタイル定設
+-----------------------------------------------------------------*/
+html,body {
+  font-family: $font-Gothic;
+  font-size: 13px;
+  line-height: 1;
+  &.scrollLock {
+    overflow: hidden;
+  }
+}
+
+body {
+  width: 100%;
+  @media #{$sp_tab} {
+    min-width: 2px;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+button,
+input[type="button"], input[type="submit"] {
+  cursor: pointer;
+}
+input, button{
+  @media #{$tab_pc} {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+  }
+}
+input[type="text"], input[type="password"], button{
+  @media #{$sp} {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+  }
+}
+
+.defs {
+  height: 0!important;
+  width: 0!important;
+  overflow: hidden!important;
+  display: none!important;
+  margin: 0!important;
+}
+
+.dn-pc {
+  @media #{$pc}{
+    display: none!important;
+  }
+}
+
+.dn-tab_pc {
+  @media #{$tab_pc}{
+    display: none!important;
+  }
+}
+
+.dn-tab {
+  @media #{$tab}{
+    display: none!important;
+  }
+}
+
+.dn-sp_tab {
+  @media #{$sp_tab}{
+    display: none!important;
+  }
+}
+
+.dn-sp {
+  @media #{$sp}{
+    display: none!important;
+  }
+}

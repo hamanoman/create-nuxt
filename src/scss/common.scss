@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+/*================================================================
+ *FILE          :common.css
+ *DESCRIPTION   :resetはressを使用。環境変数とmixinは_mixin.scss内に記述。
+                 それぞれfoundationよりインポート。
+ *AUTHOR        :
+ *--------------------------------------------------------------
+ *(C)
+=================================================================*/
+
+// -----------------------------------------------------------------
+// Foundation
+// -----------------------------------------------------------------
+@import "./foundation/_mixin.scss";
+@import "./foundation/_ress.scss";
+@import "./foundation/_lib.scss";
+@import "./foundation/_base.scss";
+@import "./module/_components.scss";
+@import "./module/_header.scss";
+@import "./module/_footer.scss";
+
+/////////////////////////////////////////////////////////////////////
+//
+// 共通ページ component
+//
+/////////////////////////////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////
+//
+// 共通ページ メインstyle
+//
+/////////////////////////////////////////////////////////////////////
+.contents {
+  min-height: calc(100vh - 200px);
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 0;
+  margin: 0 auto;
+}
+
+.topMain {
+  width: 100%;
+}
+
+.c-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 60px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 0 auto;
+  background: {
+    color: #000;
+  }
+}

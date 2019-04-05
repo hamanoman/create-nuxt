@@ -1,0 +1,234 @@
+@charset "UTF-8";
+
+/////////////////////////////////////////////////////////////////////
+//
+// メディアクエリ
+//
+/////////////////////////////////////////////////////////////////////
+$sp-small: "print, screen and (max-width: 320px)";
+$sp: "print, screen and (max-width: 767px)";
+$sp_tab: "print, screen and (max-width: 1024px)";
+$tab: "print, screen and (min-width: 768px) and (max-width: 1024px)";
+$pc-large: "print, screen and (min-width: 1367px)";
+$tab_pc: "print, screen and (min-width: 768px)";
+$pc: "print, screen and (min-width: 1025px)";
+
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// クリアフィックス
+//
+/////////////////////////////////////////////////////////////////////
+%clearfix {
+	zoom: 1;
+
+	&:before,
+	&:after {
+		position: static;
+		display: block;
+		height: 0;
+		visibility: hidden;
+		content: "\0020";
+	}
+
+	&:after {
+		clear: both;
+	}
+}
+
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// フォント
+//
+/////////////////////////////////////////////////////////////////////
+/* フォント定設
+-----------------------------------------------------------------*/
+@font-face {
+  font-family: 'MyYuGothicM';
+  font-weight: normal;
+  src: local('YuGothic-Medium'), /* PostScript Name = localの正式な指定方法 */
+  local('Yu Gothic Medium'),     /* PostScript Nameを認識できないChrome用にFull Nameを指定 */
+  local('YuGothic-Regular');
+  /* 游ゴシックMediumが存在しないWindows8.1用 */
+}
+@font-face {
+  font-family: 'MyYuGothicM';
+  font-weight: bold;
+  src: local('YuGothic-Bold'), /* PostScript Name = localの正式な指定方法 */
+  local('Yu Gothic Bold');
+  /* PostScript Nameを認識できないChrome用にFull Nameを指定 */
+}
+@font-face {
+  font-family: 'MyYuMinchoM';
+  font-weight: normal;
+  src: local("YuMincho-Medium"),
+  local("Yu Mincho Medium"),
+  local("YuMincho-Regular");
+  /* 游明朝Mediumが存在しないWindows8.1用 */
+}
+@font-face {
+  font-family: 'MyYuMinchoM';
+  font-weight: bold;
+  src: local("YuMincho-Demibold"),
+  local("Yu Mincho");
+  /* PostScript Nameを認識できないChrome用にFull Nameを指定 */
+}
+
+$font-Gothic: MyYuGothicM, "游ゴシック", "Yu Gothic", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+$font-Mincho: MyYuMinchoM, "游明朝", YuMincho,'Yu Mincho', "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", serif;
+$font-Roboto: 'Roboto', MyYuGothicM, "游ゴシック", "Yu Gothic", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+$font-Garamond: 'EB Garamond', MyYuGothicM, "游ゴシック", "Yu Gothic", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, serif;
+$font-Crimson: 'Crimson Text', MyYuGothicM, "游ゴシック", "Yu Gothic", YuGothic, "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, serif;
+$font-Hiragino_mincho: "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "ＭＳ Ｐ明朝", serif;
+$font-Hiragino_gothic: "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// easing & duration
+//
+/////////////////////////////////////////////////////////////////////
+
+/* イージング
+-----------------------------------------------------------------*/
+// マテリアルデザイン参照
+// https://material.io/guidelines/motion/duration-easing.html#duration-easing-natural-easing-curves
+$easing-standard: cubic-bezier(0.4, 0.0, 0.2, 1); // 標準カーブ
+$easing-deceleration: cubic-bezier(0.0, 0.0, 0.2, 1); // 減速カーブ
+$easing-acceleration: cubic-bezier(0.4, 0.0, 1, 1); // 加速カーブ
+$easing-sharp: cubic-bezier(0.4, 0.0, 1, 1); // 急カーブ
+
+/* デュレーション
+-----------------------------------------------------------------*/
+// SP
+$duration-SP-screenFull: 375ms;
+$duration-SP-screenIn: 225ms;
+$duration-SP-screenOut: 195ms;
+// TABLET
+$duration-TAB-screenFull: $duration-SP-screenFull * 1.3;
+$duration-TAB-screenIn: $duration-SP-screenIn * 1.3;
+$duration-TAB-screenOut: $duration-SP-screenOut * 1.3;
+// PC
+$duration-PC-screenFull: $duration-SP-screenFull + 150;
+$duration-PC-screenIn: $duration-SP-screenIn + 150;
+$duration-PC-screenOut: $duration-SP-screenOut + 150;
+
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// フェードイン
+//
+/////////////////////////////////////////////////////////////////////
+@mixin fadeIn( $duration ) {
+	transition: opacity $duration, visibility 0s ease $duration;
+	opacity: 0;
+	visibility: hidden;
+
+	&.is-show {
+		transition-delay: 0s;
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+
+
+@mixin hover-opacity( $opacity: .5, $duration: .3s ) {
+	@media #{$pc} {
+		transition: opacity $duration;
+	}
+
+	&:hover {
+		@media #{$pc} {
+			opacity: $opacity;
+		}
+	}
+}
+
+
+
+@mixin hover-color( $color: #a79069, $duration: .3s ) {
+	@media #{$pc} {
+		transition: color $duration;
+	}
+	&:hover {
+		@media #{$pc} {
+			color: $color;
+		}
+	}
+}
+
+
+
+@mixin hover-fill( $color: #a79069, $duration: .3s ) {
+	@media #{$pc} {
+		transition: fill $duration;
+	}
+	&:hover {
+		@media #{$pc} {
+			fill: $color;
+		}
+	}
+}
+
+
+
+@mixin hover-cover( $opacity: .3, $color: #000, $duration: .3s ) {
+	@media #{$pc} {
+		position: relative;
+	}
+	&:hover {
+		&:after {
+			@media #{$pc} {
+				opacity: $opacity;
+			}
+		}
+	}
+	&:after {
+		@media #{$pc} {
+			transition: opacity $duration;
+			content: "";
+			opacity: 0;
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: block;
+			width: 100%;
+			height: 100%;
+			background: {
+				color: $color;
+			}
+		}
+	}
+}
+
+
+
+/////////////////////////////////////////////////////////////////////
+//
+// input styleリセット
+//
+/////////////////////////////////////////////////////////////////////
+@mixin reset-input() {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  z-index: 1;
+  &::-ms-expand {
+    display: none;
+  }
+  &:focus {
+    outline: none;
+  }
+}
