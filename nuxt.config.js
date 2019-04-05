@@ -57,6 +57,10 @@ export default {
 
   },
 
+  api: {
+    baseURL: ''
+  },
+
   /*
   ** Build configuration
   */

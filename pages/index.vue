@@ -22,17 +22,17 @@ import axios from 'axios'
 
 export default {
   // REST APIバージョン
-  async asyncData() {
-      let result = await axios.get('https://www.e-begin.jp/wp-json/wp/v2/feature?_embed')
-      return {posts: result.data}
-  },
+  // async asyncData() {
+  //     let result = await axios.get('https://www.e-begin.jp/wp-json/wp/v2/feature?_embed')
+  //     return {posts: result.data}
+  // },
 
   // jsonバージョン
-  // computed: {
-  //   posts() {
-  //     return this.$store.getters['post/getPosts']
-  //   }
-  // },
+  computed: {
+    posts() {
+      return this.$store.getters['post/getPosts']
+    }
+  },
   components: {
     Logo
   }
