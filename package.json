@@ -6,8 +6,7 @@
   "private": true,
   "config": {
     "nuxt": {
-      "host": "localhost",
-      "port": "5000"
+      "host": "jolly-minsky-a3fbbe.netlify.com"
     }
   },
   "scripts": {
