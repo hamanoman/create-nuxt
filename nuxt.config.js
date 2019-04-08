@@ -54,24 +54,17 @@ export default {
     '@nuxtjs/pwa'
   ],
 
+  axios: {
+  },
+
   manifest: {
     name: 'nuxt-start',
     lang: 'ja',
-    short_name: 'nuxt',
-    title: 'nuxt-startです',
-    'og:title': 'nuxt-startです',
-    description: 'nuxt-startです',
-    'og:description': 'nuxt-startです',
-    theme_color: '#ffffff',
-    background_color: '#ffffff'
+    short_name: 'nuxt'
   },
 
   workbox: {
     dev: true, //開発環境でもPWA
-  },
-
-  axios: {
-
   },
 
   api: {
