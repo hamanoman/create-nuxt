@@ -12,7 +12,7 @@
       </div>
     </div>
     <nuxt-link to="/post/" class="c-button topButton">一覧ページ</nuxt-link>
-    <nuxt-link to="/login/" class="c-button topButton">ログインページ</nuxt-link>
+    <!-- <nuxt-link to="/login/" class="c-button topButton">ログインページ</nuxt-link> -->
   </section>
 </template>
 
