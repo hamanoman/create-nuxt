@@ -82,3 +82,4 @@ typings/
 
 # Service worker
 sw.*
+!dist/sw.js
