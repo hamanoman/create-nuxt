@@ -50,8 +50,25 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/pwa'
   ],
+
+  manifest: {
+    name: 'nuxt-start',
+    lang: 'ja',
+    short_name: 'nuxt',
+    title: 'nuxt-startです',
+    'og:title': 'nuxt-startです',
+    description: 'nuxt-startです',
+    'og:description': 'nuxt-startです',
+    theme_color: '#ffffff',
+    background_color: '#ffffff'
+  },
+
+  workbox: {
+    dev: true, //開発環境でもPWA
+  },
 
   axios: {
 
