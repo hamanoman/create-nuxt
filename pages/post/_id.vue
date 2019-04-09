@@ -4,13 +4,17 @@
       :data="data"
     />
 
-    <NuxtLink v-if="prevPage" :to="`/post/${prevPage.id}`">
-      &lt; Prev
-    </NuxtLink>
+    <div class="singlePager">
+      <NuxtLink v-if="prevPage" :to="`/post/${prevPage.id}`" class="singlePager_node">
+        &lt; Prev
+      </NuxtLink>
+      <div v-else class="singlePager_node"></div>
+      <NuxtLink v-if="nextPage" :to="`/post/${nextPage.id}`" class="singlePager_node">
+        Next &gt;
+      </NuxtLink>
+      <div v-else class="singlePager_node"></div>
+    </div>
 
-    <NuxtLink v-if="nextPage" :to="`/post/${nextPage.id}`">
-      Next &gt;
-    </NuxtLink>
 
     <nuxt-link to="/" class="c-button">トップページへ戻る</nuxt-link>
   </div>
@@ -19,6 +23,7 @@
 <script>
 import PostDetail from '~/components/PostDetail'
 export default {
+  layout: 'post',
   components: {
     'postdetail': PostDetail
   },
@@ -44,3 +49,13 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.singlePager {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 600px;
+  margin: 60px auto;
+}
+</style>

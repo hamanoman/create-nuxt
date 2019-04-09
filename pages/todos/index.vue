@@ -1,13 +1,14 @@
 <template>
-  <div>
+  <div class="contents">
     <ul>
-      <li v-for="ccc in bbb">
-        <input type="checkbox" :checked="ccc.done" @change="toggle(ccc)">
-        <span :class="{ done: ccc.done }">{{ ccc.text }}</span>
+      <li v-for="todo in todoList">
+        <input type="checkbox" :checked="todo.done" @change="toggle(todo)">
+        <span :class="{ done: todo.done }">{{ todo.text }}</span>
+        <button @click="removeTodo(todo)" class="removeButton">remove</button>
       </li>
-      <li><input placeholder="What needs to be done?" @keyup.enter="addTodo"></li>
     </ul>
-    <nuxt-link to="/">トップページ</nuxt-link>
+    <input placeholder="What needs to be done?" @keyup.enter="addTodo" class="todoInput">
+    <nuxt-link to="/" class="c-button">トップページ</nuxt-link>
   </div>
 </template>
 
@@ -16,12 +17,15 @@ import { mapMutations } from 'vuex'
 
 export default {
   computed: {
-    bbb () { return this.$store.state.todos.list }
+    todoList () { return this.$store.state.todos.list }
   },
   methods: {
-    addTodo (e) {
+    removeTodo ( target ) {
+      this.$store.commit('todos/remove', target);
+    },
+    addTodo ( e ) {
       this.$store.commit('todos/add', e.target.value)
-      e.target.value = ''
+      e.target.value = '' // add後、inputのテキストを削除する
     },
     ...mapMutations({
       toggle: 'todos/toggle'
@@ -31,6 +35,15 @@ export default {
 </script>
 
 <style>
+.removeButton {
+  padding: 5px 10px;
+  border: solid 1px #000;
+}
+.todoInput {
+  width: 300px;
+  margin: 60px auto;
+  border: solid 1px #ddd;
+}
 .done {
   text-decoration: line-through;
 }
