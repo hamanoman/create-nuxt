@@ -1,8 +1,16 @@
 <template>
   <div class="contents">
     <postdetail
-      :data="post"
+      :data="data"
     />
+
+    <NuxtLink v-if="prevPage" :to="`/post/${prevPage.id}`">
+      &lt; Prev
+    </NuxtLink>
+
+    <NuxtLink v-if="nextPage" :to="`/post/${nextPage.id}`">
+      Next &gt;
+    </NuxtLink>
 
     <nuxt-link to="/" class="c-button">トップページへ戻る</nuxt-link>
   </div>
@@ -14,12 +22,24 @@ export default {
   components: {
     'postdetail': PostDetail
   },
-  computed: {
-    post() {
-      const post = this.$store.getters['post/getPosts'].filter(item => {
-        return (item.id == this.$route.params.id);
-      })
-      return post[0]
+  async asyncData({ store, params }) {
+    const jsonData = store.getters['post/getPosts'];
+    let prevPage, nextPage;
+
+    const data = jsonData.filter(function(item) {
+      return (item.id == params.id);
+    })
+    for ( let i = 0; i < jsonData.length; i++ ) {
+      if ( jsonData[i].id == params.id ) {
+        prevPage = jsonData[i - 1];
+        nextPage = jsonData[i + 1];
+      }
+    }
+
+    return {
+      prevPage: prevPage,
+      nextPage: nextPage,
+      data: data[0]
     }
   }
 }

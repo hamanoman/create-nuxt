@@ -1,6 +1,6 @@
 import jsonData from '~/assets/json/data.json'
 
-// 状態管理
+// 状態の管理
 export const state = () => ({
   data: jsonData,
 })
