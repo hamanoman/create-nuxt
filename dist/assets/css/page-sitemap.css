@@ -1,0 +1,282 @@
+@charset "UTF-8";
+/*================================================================
+ *FILE          : page-favorite.css
+ *DESCRIPTION   : お気に入りリスト用 スタイル
+ *AUTHOR        :
+ *--------------------------------------------------------------
+ *(C)
+=================================================================*/
+/*-------------------------------
+
+ Foundation
+
+-----------------------------------*/
+@font-face {
+  font-family: 'MyYuGothicM';
+  font-weight: normal;
+  src: local("YuGothic-Medium"), local("Yu Gothic Medium"), local("YuGothic-Regular");
+  /* 游ゴシックMediumが存在しないWindows8.1用 */ }
+
+@font-face {
+  font-family: 'MyYuGothicM';
+  font-weight: bold;
+  src: local("YuGothic-Bold"), local("Yu Gothic Bold");
+  /* PostScript Nameを認識できないChrome用にFull Nameを指定 */ }
+
+@font-face {
+  font-family: 'MyYuMinchoM';
+  font-weight: normal;
+  src: local("YuMincho-Medium"), local("Yu Mincho Medium"), local("YuMincho-Regular");
+  /* 游ゴシックMediumが存在しないWindows8.1用 */ }
+
+@font-face {
+  font-family: 'MyYuMinchoM';
+  font-weight: bold;
+  src: local("YuMincho-Demibold"), local("Yu Mincho");
+  /* PostScript Nameを認識できないChrome用にFull Nameを指定 */ }
+
+.c-button, .c-button-ghost, .c-button-black, .siteName, .sitemapBox_node_title {
+  font-family: "Helvetica Neue", Arial, MyYuGothicM, YuGothic, "Yu Gothic", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic ProN", "Helvetica Neue", -apple-system, BlinkMacSystemFont, Meiryo, sans-serif, sans-serif;
+  letter-spacing: 0.1em; }
+
+/*================================================================
+ *FILE					:_components.scss
+ *DESCRIPTION   :全ページ共通コンポーネント カスタムCSS
+ *AUTHOR				:
+ *--------------------------------------------------------------
+ *(C)
+=================================================================*/
+.c-button, .c-button-ghost, .c-button-black {
+  display: inline-block;
+  text-align: center;
+  border: 1px solid #000;
+  color: #000;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  transition: color 200ms cubic-bezier(0.4, 0, 0.2, 1), background 200ms cubic-bezier(0.4, 0, 0.2, 1); }
+  @media only screen and (min-width: 768px) {
+    .c-button, .c-button-ghost, .c-button-black {
+      padding: 20px 18px; } }
+  @media only screen and (max-width: 767px) {
+    .c-button, .c-button-ghost, .c-button-black {
+      padding: 15px 18px; } }
+
+.c-button {
+  background-color: #000;
+  color: #fff; }
+  @media only screen and (min-width: 1025px) {
+    .c-button:hover {
+      color: #000;
+      background-color: #fff; } }
+  .c-button.nolink {
+    pointer-events: none; }
+
+@media only screen and (min-width: 1025px) {
+  .c-button-ghost:hover {
+    color: #fff;
+    background-color: #000; } }
+
+.c-button-black {
+  color: #000;
+  border-color: #000; }
+  @media only screen and (min-width: 1025px) {
+    .c-button-black:hover {
+      color: #fff;
+      background-color: #000; } }
+
+.c-button-list {
+  position: relative; }
+  @media only screen and (max-width: 767px) {
+    .c-button-list {
+      width: 100%; } }
+  @media only screen and (min-width: 768px) {
+    .c-button-list {
+      width: 300px; } }
+  @media only screen and (min-width: 1025px) {
+    .c-button-list:hover:before {
+      background-image: url(../svg/arrow_white.svg); } }
+  .c-button-list:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 12px;
+    height: 100%;
+    -webkit-transform: rotate(-180deg);
+    -ms-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+    background-image: url(../svg/arrow_black.svg);
+    background-repeat: no-repeat;
+    background-size: 12px auto;
+    background-position: center; }
+    @media only screen and (max-width: 767px) {
+      .c-button-list:before {
+        left: 10px; } }
+    @media only screen and (min-width: 768px) {
+      .c-button-list:before {
+        left: 32px; } }
+
+.c-button-more {
+  position: relative; }
+  @media only screen and (min-width: 768px) {
+    .c-button-more {
+      width: 300px; } }
+  @media only screen and (max-width: 767px) {
+    .c-button-more {
+      width: 100%; } }
+  @media only screen and (min-width: 1025px) {
+    .c-button-more:hover:before {
+      background-image: url(../svg/plus_thin_white.svg); } }
+  .c-button-more:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 12px;
+    height: 100%;
+    background-image: url(../svg/plus_thin.svg);
+    background-repeat: no-repeat;
+    background-size: 12px auto;
+    background-position: center; }
+    @media only screen and (max-width: 767px) {
+      .c-button-more:before {
+        right: 10px; } }
+    @media only screen and (min-width: 768px) {
+      .c-button-more:before {
+        right: 32px; } }
+
+.c-button-arrow {
+  position: relative; }
+  @media only screen and (min-width: 768px) {
+    .c-button-arrow {
+      width: 300px; } }
+  @media only screen and (max-width: 767px) {
+    .c-button-arrow {
+      width: 100%; } }
+  @media only screen and (min-width: 1025px) {
+    .c-button-arrow:hover:before {
+      background-image: url(../svg/arrow_white.svg); } }
+  .c-button-arrow:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 12px;
+    height: 100%;
+    background-image: url(../svg/arrow_black.svg);
+    background-repeat: no-repeat;
+    background-size: 12px auto;
+    background-position: center; }
+    @media only screen and (max-width: 767px) {
+      .c-button-arrow:before {
+        right: 10px; } }
+    @media only screen and (min-width: 768px) {
+      .c-button-arrow:before {
+        right: 32px; } }
+  @media only screen and (min-width: 1025px) {
+    .c-button-arrow.c-button:hover:before {
+      background-image: url(../svg/arrow_black.svg); } }
+  .c-button-arrow.c-button:before {
+    background-image: url(../svg/arrow_white.svg); }
+
+.siteName {
+  text-align: center;
+  font-weight: 700; }
+  @media only screen and (max-width: 767px) {
+    .siteName {
+      margin-bottom: 43px;
+      font-size: 20px; } }
+  @media only screen and (min-width: 768px) {
+    .siteName {
+      font-size: 28px;
+      margin-bottom: 45px; } }
+
+.siteName_link {
+  letter-spacing: 0.2em; }
+
+/*
+	.contents
+----------------------------------------*/
+@media only screen and (max-width: 767px) {
+  .contents {
+    padding: 0 0 60px; } }
+
+@media only screen and (min-width: 768px) {
+  .contents {
+    padding: 0 0 120px; } }
+
+/*
+	.sitemapBox
+----------------------------------------*/
+@media only screen and (max-width: 767px) {
+  .sitemapBox {
+    margin: 0 20px; } }
+
+@media only screen and (min-width: 768px) {
+  .sitemapBox {
+    max-width: 1100px;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin: 0 auto 0; } }
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .sitemapBox {
+    margin: 0 40px; } }
+
+@media only screen and (min-width: 768px) {
+  .sitemapBox_list {
+    width: 50%; } }
+
+@media only screen and (min-width: 768px) {
+  .sitemapBox_list + .sitemapBox_list {
+    margin-left: 40px; } }
+
+@media only screen and (max-width: 767px) {
+  .sitemapBox_node {
+    margin-bottom: 32px; } }
+
+@media only screen and (min-width: 768px) {
+  .sitemapBox_node {
+    margin-bottom: 32px; } }
+
+.sitemapBox_node_title {
+  display: inline-block;
+  border-bottom: 1px solid #2aa5d3;
+  color: #2aa5d3; }
+  @media only screen and (max-width: 767px) {
+    .sitemapBox_node_title {
+      margin-bottom: 12px;
+      font-size: 17px; } }
+  @media only screen and (min-width: 768px) {
+    .sitemapBox_node_title {
+      margin-bottom: 14px;
+      font-size: 19px; } }
+  .outlink .sitemapBox_node_title:after {
+    content: "";
+    display: inline-block;
+    vertical-align: baseline;
+    width: 15px;
+    height: 15px;
+    margin-left: 5px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../svg/outlink_blue_l.svg);
+    background-size: 15px auto; }
+    @media only screen and (max-width: 767px) {
+      .outlink .sitemapBox_node_title:after {
+        background-size: 13px;
+        width: 13px;
+        height: 13px; } }
+
+.sitemapBox_node_caption {
+  line-height: 1.6; }
+  @media only screen and (max-width: 767px) {
+    .sitemapBox_node_caption {
+      font-size: 14px; } }
+  @media only screen and (min-width: 768px) {
+    .sitemapBox_node_caption {
+      font-size: 13px; } }
